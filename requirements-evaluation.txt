@@ -1,0 +1,8 @@
+-r requirements.txt
+torch
+torchvision
+scipy
+scikit-image
+torchmetrics
+pyiqa
+

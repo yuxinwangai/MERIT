@@ -1,0 +1,63 @@
+{
+  "development_window": [
+    "2026-05-08",
+    "2026-05-11"
+  ],
+  "workflow_lock_date": "2026-05-12",
+  "test_window": [
+    "2026-05-12",
+    "2026-05-18"
+  ],
+  "prompt_file": "prompts/merit_submission_prompt.txt",
+  "output_size": [
+    1024,
+    1024
+  ],
+  "maximum_technical_retries": 1,
+  "models": {
+    "gpt": {
+      "model": "gpt-image-2-2026-04-21",
+      "seed": null,
+      "images": 1
+    },
+    "gemini": {
+      "model": "gemini-3-pro-image-preview",
+      "seed": null,
+      "images": 1
+    },
+    "grok": {
+      "model": "grok-imagine-image-quality",
+      "seed": null,
+      "images": 1
+    },
+    "qwen": {
+      "model": "Qwen/Qwen-Image-Edit-2509",
+      "pipeline": "QwenImageEditPlusPipeline",
+      "seed": 20260601,
+      "num_inference_steps": 40,
+      "true_cfg_scale": 4.0,
+      "guidance_scale": 1.0,
+      "torch_dtype": "bfloat16",
+      "num_images_per_prompt": 1,
+      "negative_prompt": " "
+    }
+  },
+  "evaluation": {
+    "metric_backend": "cpu",
+    "feature_extractor": "torchvision.inception_v3",
+    "feature_layer": "classifier_identity",
+    "feature_dimension": 2048,
+    "kid_kernel": "cubic_polynomial",
+    "kid_subsets": null,
+    "feature_covariance_ddof": 1,
+    "ssim_backend": "cpu_global_RGB_moments",
+    "ssim_K1": 0.01,
+    "ssim_K2": 0.03,
+    "ssim_data_range": 255,
+    "ssim_covariance_ddof": 1,
+    "fid_dtype": "float64",
+    "fid_covariance_root": "symmetric_Bures",
+    "fid_negative_eigenvalue_relative_tolerance": 1e-10,
+    "bootstrap_replicates": 2000
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "arterial_occlusion_or_severe_stenosis": {
+    "status": "unavailable",
+    "description": ""
+  },
+  "distal_arterial_filling": {
+    "status": "unavailable",
+    "description": ""
+  },
+  "collateral_appearance": {
+    "status": "unavailable",
+    "description": ""
+  },
+  "early_ischemic_change_on_ncct": {
+    "status": "unavailable",
+    "description": ""
+  },
+  "other_admission_imaging_findings": {
+    "status": "unavailable",
+    "description": ""
+  },
+  "nihss": null,
+  "onset_to_door_minutes": null
+}
+

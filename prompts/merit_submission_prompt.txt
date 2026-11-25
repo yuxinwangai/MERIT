@@ -1,0 +1,169 @@
+Role
+You are an experienced neuroradiologist and CT perfusion post-processing specialist.
+Task
+Based on the provided 3 × 3 axial brain CTA panel and the corresponding clinical information, generate a co-ordered 3 × 3 array of synthetic CT perfusion Tmax-like parameter maps.
+Each output tile must correspond tile-by-tile to the CTA slice at the same position in the input panel. Preserve the original panel order and cranio-caudal sequence. Do not reorder, duplicate, merge, omit, or substitute output tiles.
+The generated maps must emulate clinical CT perfusion Tmax post-processing maps. They should visualize broad parenchymal perfusion-delay patterns rather than vessels, angiographic enhancement, or other perfusion parameters.
+Tmax refers to the time to maximum of the residue function. The generated output is a synthetic Tmax-like visual representation and must not be interpreted as a quantitative Tmax measurement in seconds.
+Clinical condition to reflect
+Generate the synthetic Tmax-like maps strictly according to the following clinical information:
+{clinical_situation}
+Most important spatial correspondence requirement
+For each output tile, the synthetic Tmax-like map must strictly match the valid brain-parenchymal extent of its corresponding CTA tile.
+Apply the following requirements independently to every CTA-output tile pair:
+- Restrict the colored Tmax-like region to the visible intracranial brain-parenchymal region in the corresponding CTA slice.
+- Do not extend colored signal beyond the true visible brain boundary in the CTA image.
+- Do not enlarge, shrink, stretch, rotate, translate, or reshape the cerebral contour.
+- Do not generate additional brain tissue that is absent from the corresponding CTA slice.
+- Do not display Tmax-like color in extracranial tissue, skull, background, air, table structures, image margins, or other nonbrain regions.
+- Preserve the approximate shape, size, left-right width, and anteroposterior extent of the valid intracranial tissue mask.
+- Preserve the approximate locations of the ventricles, midline, and major interhemispheric relationships.
+- Maintain natural through-plane continuity across adjacent output tiles. However, each tile must retain the anatomy and tissue extent of its own corresponding CTA slice.
+- At superior, inferior, skull-base, or low-brain-content levels, display only the reduced intracranial extent visible in the corresponding CTA tile.
+Core principle
+Synthetic Tmax-like signal must remain strictly confined to the valid brain-parenchymal mask of each corresponding CTA tile. It must never exceed the effective tissue extent visible on CTA.
+Core output requirements
+Return one square composite image containing a 3 × 3 array of synthetic Tmax-like maps.
+The output array must preserve the same tile layout and order as the CTA input panel. Each output tile must visually correspond to its matched CTA tile.
+The result should resemble a clinical CT perfusion Tmax post-processing label map rather than an anatomical heatmap, CTA image, medical illustration, or aesthetically enhanced visualization.
+Preserve a clear 3 × 3 panel arrangement. Do not add tile labels, text, arrows, colour bars, measurement markers, or decorative borders.
+Target visual appearance
+Each output tile should have the following characteristics:
+- Black background.
+- Tmax-like signal displayed only within the valid intracranial tissue region.
+- Rough, low-resolution, clinical post-processing appearance.
+- Discrete, quantized, segmented pseudocolour levels rather than smooth continuous gradients.
+- Irregular patchy, island-like, clustered, or mosaic-like perfusion regions.
+- Block-like or segmented colour transitions.
+- Limited anatomical detail, with only approximate preservation of the cerebral contour, ventricles, and midline.
+- No detailed cortical gyral texture, vascular detail, realistic tissue texture, or high-frequency anatomical shading.
+- No coloured perfusion region larger than the valid brain-parenchymal extent of the corresponding CTA tile.
+Colour-distribution guidance
+The dominant colours should include:
+- Cyan
+- Green
+- Teal
+- Blue
+- Purple
+Regions with greater perfusion delay may contain:
+- Yellow
+- Orange
+- Red
+However:
+- Yellow, orange, and red must appear only as scattered small-to-moderate irregular patches, clusters, or regional foci.
+- Warm-coloured abnormalities must remain entirely within the valid brain-parenchymal mask.
+- Do not generate broad continuous red or orange cortical bands.
+- Do not generate a symmetric circumferential red pattern across the cerebral cortex.
+- Do not generate extensive warm-coloured signal covering the entire brain parenchyma.
+- The overall map should remain predominantly cyan, green, teal, blue, and purple, with only focal or regional warm-coloured areas.
+- Warm-coloured regions must represent parenchymal perfusion delay. They must not resemble vessels, vascular trees, arterial enhancement, or CTA opacification.
+Clinical Tmax-like label-map style
+The output must resemble real clinical Tmax post-processing label maps:
+- Rough and quantized.
+- Patchy and irregular.
+- Low in spatial resolution.
+- Segmentation-like rather than photographic.
+- Regional abnormalities with clustered distribution.
+- Visually simplified.
+- Not aesthetically smoothed.
+- Free of realistic CTA vascular enhancement or vessel-like texture.
+This requirement is essential.
+The output must not resemble:
+- CTA images.
+- Anatomical heatmaps.
+- Perfusion illustrations.
+- Smooth blended medical visualizations.
+- Imagined anatomical tissue maps.
+- CBV, CBF, MTT, or TTP maps.
+- Raw CT images.
+- Raw CTP source images.
+Anatomical consistency
+For every output tile, retain approximate correspondence with the matched CTA slice in terms of:
+- Axial level.
+- Intracranial tissue extent.
+- Cerebral contour.
+- Left-right hemispheric width.
+- Anteroposterior brain extent.
+- Ventricular position.
+- Midline orientation.
+Only coarse anatomical correspondence is required.
+Do not render detailed vessels, skull, extracranial soft tissue, cortical sulci, gyri, or other fine anatomical structures.
+Perfusion-abnormality generation principles
+Tmax-like delay regions must conform to the vascular territory and hypoperfusion pattern supported by the clinical information.
+Requirements:
+- Display abnormalities as regional parenchymal perfusion-delay patterns.
+- Use irregular patchy, regional, clustered, or confluent low-resolution areas.
+- Permit rough, segmented, low-resolution boundaries.
+- Do not create tubular, branching, linear, or arterial-course-shaped abnormalities.
+- Do not directly transform hyperdense CTA vessels into Tmax-like abnormalities.
+- Do not generate sharply demarcated infarct-core-like or tumour-like lesions unless explicitly supported by the clinical information.
+- Keep all abnormality-related signal within the valid brain-parenchymal mask.
+- When clinical information does not support a focal perfusion abnormality, retain predominantly cool-coloured parenchymal signal with limited nonfocal heterogeneity.
+- Do not invent unrelated focal lesions, hemorrhage-like abnormalities, mass effect, midline shift, or tumour-like findings.
+Background and nonbrain regions
+The following areas must remain black or contain no Tmax-like signal:
+- Background.
+- Skull.
+- Extracranial soft tissue.
+- Air.
+- Image margins.
+- Nonpatient structures.
+- Scanner-table structures.
+- Ventricular or sulcal spaces when these are not part of the valid parenchymal mask.
+- Any region outside the effective intracranial tissue extent of the corresponding CTA tile.
+Strong negative constraints
+Do not generate:
+- CTA-style vessels.
+- Bright arteries.
+- Angiographic enhancement.
+- Vascular trees.
+- Vessel-shaped Tmax-like abnormalities.
+- Skull rings.
+- Bone-window appearance.
+- Extracranial soft tissue.
+- Coloured signal outside the CTA brain-parenchymal boundary.
+- A perfusion mask larger than the corresponding CTA brain-tissue extent.
+- A brain contour inconsistent with the matched CTA tile.
+- Raw CT images.
+- Raw CTP source images.
+- CBV maps.
+- CBF maps.
+- MTT maps.
+- TTP maps.
+- Any non-Tmax perfusion parameter map.
+- Smooth anatomical heatmaps.
+- Broad continuous red or orange cortical bands.
+- Symmetric whole-brain red patterns.
+- High-frequency vessel-like texture.
+- Fine gyral or sulcal texture.
+- Detailed anatomical shading.
+- Colour scales.
+- Text labels.
+- Arrows.
+- Measurement markers.
+- Meaningless random noise.
+- Sharp granular noise.
+- Isolated speckle artifacts.
+- Distorted ventricles.
+- Midline shift.
+- Mass effect.
+- Hemorrhage-like lesions.
+- Tumour-like lesions.
+- Unrelated focal pathology.
+- Sharply defined infarct-core-like lesions unless explicitly supported by the clinical information.
+Final internal verification
+Before finalizing the output, verify internally that:
+- Every coloured Tmax-like region remains strictly within the valid brain-parenchymal extent of its matched CTA tile.
+- The size and contour of each output brain mask match the corresponding CTA tissue extent.
+- No colour appears in skull, extracranial tissue, background, air, or nonbrain regions.
+- No vessel-like or CTA-enhancement pattern is present.
+- No CBV, CBF, MTT, TTP, or non-Tmax perfusion appearance is produced.
+- The result is not over-smoothed, aestheticized, illustrative, or anatomically photorealistic.
+- No extensive continuous red or orange cortical band is present.
+- No unsupported focal lesion is introduced.
+- Each output tile preserves the matched CTA level, ventricular position, midline orientation, and valid intracranial tissue extent.
+- The final 3 × 3 output panel retains the same tile order as the 3 × 3 CTA input panel.
+Final output
+Return one square 3 × 3 composite panel of synthetic Tmax-like maps.
+Each output tile must correspond to the CTA tile at the same position and must be strictly restricted to that tile’s valid brain-parenchymal extent.
+

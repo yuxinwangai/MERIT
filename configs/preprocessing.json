@@ -1,0 +1,16 @@
+{
+  "retained_fraction": 0.3,
+  "bone_threshold_hu": 150,
+  "soft_tissue_min_hu": -20,
+  "soft_tissue_max_hu": 120,
+  "bone_closing_radius": 5,
+  "final_closing_radius": 3,
+  "minimum_component_pixels": 1000,
+  "cta_window_center": 200,
+  "cta_window_width": 600,
+  "ncct_window_center": 40,
+  "ncct_window_width": 80,
+  "tile_size": 512,
+  "inplane_spacing_mm": 0.5
+}
+
